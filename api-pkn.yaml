@@ -3,7 +3,7 @@ info:
   title: API Aplikasi Pendidikan Karakter Nabawiyah
   version: '0.0.1'
 servers:
-  - url: https://v1.api.karakternabawiyah.com
+  - url: https://api.karakternabawiyah.com/v1/public/tafsir_bakat
 tags:
   - name: Test Types
   - name: Doing Test
@@ -19,37 +19,133 @@ paths:
       responses:
           '200':
             description: OK
+            content:
+              application/json: 
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Test_Types_Collection'
   /test_types/{test_type_id}:
     get:
       tags:
         - Test Types
       summary: get questions for a test type
+      parameters:
+        - name: test_type_id
+          in: path
+          required: true
+          description: The ID of the test type
+          schema:
+            type: string
+          example: "2c456fc7-56c8-11ef-a38e-7cd30ac74cb2"
       responses:
           '200':
             description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Test_Types'
   /tests:
     post:
       tags:
         - Doing Test
       summary: make a new test
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                test_type_id:
+                  type: string
+                  maxLength: 100
+                  example: 2c456fc7-56c8-11ef-a38e-7cd30ac74cb2
+                by_user_id:
+                  type: string
+                  maxLength: 100
+                  example: get user ID or random UUID 
+                subject_user_id:
+                  type: string
+                  maxLength: 100
+                  example: get user ID or random UUID
+                subject_name:
+                  type: string
+                  maxLength: 100
+                  nullable: true
+                  example: alternative if name not found
+                score_test:
+                  type: string
+                  example: '{"tb40Dewasa":[81,32,60,74,60,79,...]}'
+                is_public_test:
+                  type: boolean
+                institution_id:
+                  type: string
+                  maxLength: 100
+                  nullable: true
+                  example: null or get institution ID
       responses:
-          '200':
-            description: OK
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+              
   /tests/{test_id}:
     get:
       tags:
         - Result
       summary: get a result of a test
       responses:
-          '200':
-            description: OK
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tests'
     put:
       tags:
         - Doing Test
       summary: updating a test answers or properties
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_test:
+                  type: string
+                  maxLength: 100
+                by_user_id:
+                  type: string
+                  maxLength: 100
+                  example: get user ID or random UUID 
+                subject_user_id:
+                  type: string
+                  maxLength: 100
+                  example: get user ID or random UUID
+                subject_name:
+                  type: string
+                  maxLength: 100
+                  nullable: true
+                  example: alternative if name not found
+                score_test:
+                  type: string
+                  example: '{"tb40Dewasa":[81,32,60,74,60,79,...]}'
+                is_public_test:
+                  type: boolean
+                institution_id:
+                  type: string
+                  maxLength: 100
+                  nullable: true
+                  example: null or get institution ID
       responses:
-          '200':
-            description: OK
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
   /tests/{test_id}/image/{image_type}:
     get:
       tags:
@@ -67,60 +163,261 @@ paths:
           '200':
             description: OK
 
-
   /users/{user_id}:
     get:
       tags:
         - User
       summary: get public user info
       responses:
-          '200':
-            description: OK
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+    post:
+      tags:
+        - User
+      summary: create new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name_user:
+                  type: string
+                  maxLength: 100
+                phone_user:
+                  type: string
+                  maxLength: 50
+                data:
+                  type: string
+                is_public_user:
+                  type: boolean
+
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
     put:
       tags:
         - User
       summary: update self user info
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_user:
+                  type: string
+                  maxLength: 100
+                name_user:
+                  type: string
+                  maxLength: 100
+                phone_user:
+                  type: string
+                  maxLength: 50
+                data:
+                  type: string
+                is_public_user:
+                  type: boolean
+
       responses:
-          '200':
-            description: OK
-  /users/{wa_number}:
-    put:
-      tags:
-        - User
-      summary: request login link (key) to whatsapp
-      responses:
-          '200':
-            description: OK
-  /users/tests/{login_key}:
-    get:
-      tags:
-        - User
-      summary: get list of tests taken by user
-      responses:
-          '200':
-            description: OK
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
   /institutions:
     get:
       tags:
         - Institution
       summary: get list of institution 
       responses:
-          '200':
-            description: OK
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Institutions_Collection'
+    post:
+      tags:
+        - Institution
+      summary: create a new institution
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name_institution:
+                  type: string
+                  maxLength: 100
+                phone_institution:
+                  type: string
+                  maxLength: 50
+                is_public:
+                  type: boolean
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
   /institutions/{institution_id}:
     get:
       tags:
         - Institution
       summary: get institution info
       responses:
-          '200':
-            description: OK
-  /institutions/{institution_id}/{login_key}:
-    put:
-      tags:
-        - Institution
-      summary: update institution info
-      responses:
-          '200':
-            description: OK
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Institutions'
   
+components:
+  schemas:
+    Message:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        id:
+          type: string
+    Test_Types:
+      description: ''
+      type: object
+      properties:
+        id_test_type:
+          description: ''
+          type: string
+          maxLength: 100
+        name_test_type:
+          description: ''
+          type: string
+          maxLength: 100
+        data_test_type:
+          description: ''
+          type: string
+        url_test_type:
+          description: ''
+          type: string
+          maxLength: 100
+    Test_Types_Collection:
+      type: object
+      properties:
+        totalResults:
+          type: integer
+        itemsPerPage:
+          type: integer
+        startIndex:
+          type: integer
+        entry:
+          type: array
+          items:
+            $ref: '#/components/schemas/Test_Types'
+    Tests:
+      type: object
+      properties:
+        id_test:
+          type: string
+          maxLength: 100
+        test_type_id:
+          type: string
+          maxLength: 100
+        institution_id:
+          type: string
+          maxLength: 100
+        by_user_id:
+          type: string
+          maxLength: 100
+        score_test:
+          type: string
+        result_test:
+          type: string
+        history_test:
+          type: string
+        is_public_test:
+          type: boolean
+        subject_user_id:
+          type: string
+          maxLength: 100
+        subject_name:
+          type: string
+          maxLength: 100
+        properties:
+          type: string
+        date_test:
+          format: date-time
+          type: string
+    Tests_Collection:
+      type: object
+      properties:
+        totalResults:
+          type: integer
+        itemsPerPage:
+          type: integer
+        startIndex:
+          type: integer
+        entry:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tests'
+    Users:
+      type: object
+      properties:
+        id_user:
+          type: string
+          maxLength: 100
+        name_user:
+          type: string
+          maxLength: 100
+        phone_user:
+          type: string
+          maxLength: 50
+        data:
+          type: string
+        history_user:
+          type: string
+        is_public_user:
+          type: boolean
+    Institutions:
+      type: object
+      properties:
+        id_institution:
+          type: string
+          maxLength: 100
+        name_institution:
+          type: string
+          maxLength: 100
+        phone_institution:
+          type: string
+          maxLength: 50
+        history_institution:
+          type: string
+        is_public:
+          type: boolean
+    Institutions_Collection:
+      type: object
+      properties:
+        totalResults:
+          type: integer
+        itemsPerPage:
+          type: integer
+        startIndex:
+          type: integer
+        entry:
+          type: array
+          items:
+            $ref: '#/components/schemas/Institutions'

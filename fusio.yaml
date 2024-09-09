@@ -1,0 +1,696 @@
+openapi: 3.0.3
+info:
+  title: Fusio
+  version: '1'
+servers:
+  - url: https://api.karakternabawiyah.com/v1/public/
+paths:
+  /tafsir_bakat/users/{id}:
+    get:
+      tags:
+        - pkn
+      description: Returns a single row
+      operationId: tafsir.bakat.users.get
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+    put:
+      tags:
+        - pkn
+      description: Updates an existing row
+      operationId: tafsir.bakat.users.update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    delete:
+      tags:
+        - pkn
+      description: Deletes an existing row
+      operationId: tafsir.bakat.users.delete
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /tafsir_bakat/users:
+    get:
+      tags:
+        - pkn
+      description: Returns a collection of rows
+      operationId: tafsir.bakat.users.getAll
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users_Collection'
+    post:
+      tags:
+        - pkn
+      description: Creates a new row
+      operationId: tafsir.bakat.users.create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    parameters: []
+  /tafsir_bakat/test_types/{id}:
+    get:
+      tags:
+        - pkn
+      description: Returns a single row
+      operationId: tafsir.bakat.test_types.get
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Test_Types'
+    put:
+      tags:
+        - pkn
+      description: Updates an existing row
+      operationId: tafsir.bakat.test_types.update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Test_Types'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    delete:
+      tags:
+        - pkn
+      description: Deletes an existing row
+      operationId: tafsir.bakat.test_types.delete
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /tafsir_bakat/test_types:
+    get:
+      tags:
+        - pkn
+      description: Returns a collection of rows
+      operationId: tafsir.bakat.test_types.getAll
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Test_Types_Collection'
+    post:
+      tags:
+        - pkn
+      description: Creates a new row
+      operationId: tafsir.bakat.test_types.create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Test_Types'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    parameters: []
+  /tafsir_bakat/tests/{id}:
+    get:
+      tags:
+        - pkn
+      description: Returns a single row
+      operationId: tafsir.bakat.tests.get
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tests'
+    put:
+      tags:
+        - pkn
+      description: Updates an existing row
+      operationId: tafsir.bakat.tests.update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tests'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    delete:
+      tags:
+        - pkn
+      description: Deletes an existing row
+      operationId: tafsir.bakat.tests.delete
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /tafsir_bakat/tests:
+    get:
+      tags:
+        - pkn
+      description: Returns a collection of rows
+      operationId: tafsir.bakat.tests.getAll
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tests_Collection'
+    post:
+      tags:
+        - pkn
+      description: Creates a new row
+      operationId: tafsir.bakat.tests.create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tests'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    parameters: []
+  /tafsir_bakat/institutions/{id}:
+    get:
+      tags:
+        - pkn
+      description: Returns a single row
+      operationId: tafsir.bakat.institutions.get
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Institutions'
+    put:
+      tags:
+        - pkn
+      description: Updates an existing row
+      operationId: tafsir.bakat.institutions.update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Institutions'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    delete:
+      tags:
+        - pkn
+      description: Deletes an existing row
+      operationId: tafsir.bakat.institutions.delete
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /tafsir_bakat/institutions:
+    get:
+      tags:
+        - pkn
+      description: Returns a collection of rows
+      operationId: tafsir.bakat.institutions.getAll
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Institutions_Collection'
+    post:
+      tags:
+        - pkn
+      description: Creates a new row
+      operationId: tafsir.bakat.institutions.create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Institutions'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    parameters: []
+  /authorization/whoami:
+    get:
+      tags:
+        - authorization
+      operationId: authorization.getWhoami
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Backend_User'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_Message'
+      security:
+        - app:
+            - authorization
+    parameters: []
+  /authorization/revoke:
+    post:
+      tags:
+        - authorization
+      operationId: authorization.revoke
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_Message'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_Message'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_Message'
+      security:
+        - app:
+            - authorization
+    parameters: []
+  /:
+    get:
+      operationId: meta.getAbout
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/System_About'
+    parameters: []
+components:
+  schemas:
+    Institutions:
+      type: object
+      properties:
+        id_institution:
+          type: string
+          maxLength: 100
+        name_institution:
+          type: string
+          maxLength: 100
+        phone_institution:
+          type: string
+          maxLength: 50
+        history_institution:
+          type: string
+        is_public:
+          type: boolean
+        login_key:
+          type: string
+          maxLength: 100
+    Test_Types:
+      description: ''
+      type: object
+      properties:
+        id_test_type:
+          description: ''
+          type: string
+          maxLength: 100
+        name_test_type:
+          description: ''
+          type: string
+          maxLength: 100
+        data_test_type:
+          description: ''
+          type: string
+        url_test_type:
+          description: ''
+          type: string
+          maxLength: 100
+    Tests:
+      type: object
+      properties:
+        id_test:
+          type: string
+          maxLength: 100
+        test_type_id:
+          type: string
+          maxLength: 100
+        institution_id:
+          type: string
+          maxLength: 100
+        by_user_id:
+          type: string
+          maxLength: 100
+        score_test:
+          type: string
+        result_test:
+          type: string
+        history_test:
+          type: string
+        is_public_test:
+          type: boolean
+        subject_user_id:
+          type: string
+          maxLength: 100
+        subject_name:
+          type: string
+          maxLength: 100
+        properties:
+          type: string
+        date_test:
+          format: date-time
+          type: string
+    Users:
+      type: object
+      properties:
+        id_user:
+          type: string
+          maxLength: 100
+        name_user:
+          type: string
+          maxLength: 100
+        phone_user:
+          type: string
+          maxLength: 50
+        data:
+          type: string
+        history_user:
+          type: string
+        is_public_user:
+          type: boolean
+        login_key:
+          type: string
+          maxLength: 50
+    Backend_App:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        status:
+          type: integer
+        name:
+          type: string
+          pattern: ^[a-zA-Z0-9\-\_]{3,64}$
+        url:
+          type: string
+        parameters:
+          type: string
+        appKey:
+          type: string
+        appSecret:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/Common_Metadata'
+        date:
+          format: date-time
+          type: string
+        scopes:
+          type: array
+          items:
+            type: string
+        tokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/Backend_Token'
+    Backend_Token:
+      type: object
+      properties:
+        id:
+          type: integer
+        status:
+          type: integer
+        name:
+          type: string
+        scopes:
+          type: array
+          items:
+            type: string
+        ip:
+          type: string
+        expire:
+          format: date-time
+          type: string
+        date:
+          format: date-time
+          type: string
+    Backend_User:
+      type: object
+      properties:
+        id:
+          type: integer
+        roleId:
+          type: integer
+        planId:
+          type: integer
+        status:
+          type: integer
+        name:
+          type: string
+          pattern: ^[a-zA-Z0-9\-\_\.]{3,32}$
+        email:
+          type: string
+        points:
+          type: integer
+        scopes:
+          type: array
+          items:
+            type: string
+        apps:
+          type: array
+          items:
+            $ref: '#/components/schemas/Backend_App'
+        metadata:
+          $ref: '#/components/schemas/Common_Metadata'
+        date:
+          format: date-time
+          type: string
+    Common_Message:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        id:
+          type: string
+    Common_Metadata:
+      type: object
+      additionalProperties:
+        type: string
+    Institutions_Collection:
+      type: object
+      properties:
+        totalResults:
+          type: integer
+        itemsPerPage:
+          type: integer
+        startIndex:
+          type: integer
+        entry:
+          type: array
+          items:
+            $ref: '#/components/schemas/Institutions'
+    Message:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        id:
+          type: string
+    System_About:
+      type: object
+      properties:
+        apiVersion:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        termsOfService:
+          type: string
+        contactName:
+          type: string
+        contactUrl:
+          type: string
+        contactEmail:
+          type: string
+        licenseName:
+          type: string
+        licenseUrl:
+          type: string
+        paymentCurrency:
+          type: string
+        categories:
+          type: array
+          items:
+            type: string
+        scopes:
+          type: array
+          items:
+            type: string
+        apps:
+          $ref: '#/components/schemas/System_AboutApps'
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/System_AboutLink'
+    System_AboutApps:
+      type: object
+      additionalProperties:
+        type: string
+    System_AboutLink:
+      type: object
+      properties:
+        rel:
+          type: string
+        href:
+          type: string
+    Test_Types_Collection:
+      type: object
+      properties:
+        totalResults:
+          type: integer
+        itemsPerPage:
+          type: integer
+        startIndex:
+          type: integer
+        entry:
+          type: array
+          items:
+            $ref: '#/components/schemas/Test_Types'
+    Tests_Collection:
+      type: object
+      properties:
+        totalResults:
+          type: integer
+        itemsPerPage:
+          type: integer
+        startIndex:
+          type: integer
+        entry:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tests'
+    Users_Collection:
+      type: object
+      properties:
+        totalResults:
+          type: integer
+        itemsPerPage:
+          type: integer
+        startIndex:
+          type: integer
+        entry:
+          type: array
+          items:
+            $ref: '#/components/schemas/Users'
+  securitySchemes:
+    app:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.karakternabawiyah.com/v1/public/authorization/token
+          refreshUrl: https://api.karakternabawiyah.com/v1/public/authorization/token
+          scopes:
+            default: ''
+            pkn: ''
