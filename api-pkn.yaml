@@ -95,7 +95,15 @@ paths:
     get:
       tags:
         - Result
-      summary: get a result of a test
+      summary: get data of a test
+      parameters:
+        - name: test_id
+          in: path
+          required: true
+          description: The ID of the test
+          schema:
+            type: string
+          example: "13d08571-5662-4c6e-a0dd-f8ab195621b9"
       responses:
         '200':
           description: ''
@@ -107,6 +115,14 @@ paths:
       tags:
         - Doing Test
       summary: updating a test answers or properties
+      parameters:
+        - name: test_id
+          in: path
+          required: true
+          description: The ID of the test
+          schema:
+            type: string
+          example: "13d08571-5662-4c6e-a0dd-f8ab195621b9"
       requestBody:
         content:
           application/json:
@@ -146,19 +162,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Message'
-  /tests/{test_id}/image/{image_type}:
+  
+  /calculate/{test_id}:
+    put:
+      tags:
+        - Result
+      summary: calculate result of a test
+      parameters:
+        - name: test_id
+          in: path
+          required: true
+          description: The ID of the test
+          schema:
+            type: string
+          example: "13d08571-5662-4c6e-a0dd-f8ab195621b9"
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /image/{test_id}/{image_type}:
     get:
       tags:
         - Result
       summary: get tree map image
-      responses:
-          '200':
-            description: OK
-  /tests/{test_id}/calculate:
-    put:
-      tags:
-        - Result
-      summary: recalculate result of a test
+      parameters:
+        - name: test_id
+          in: path
+          required: true
+          description: The ID of the test
+          schema:
+            type: string
+          example: "13d08571-5662-4c6e-a0dd-f8ab195621b9"
+        - name: image_type
+          in: path
+          required: true
+          description: Image Type, "rank" or "real"
+          schema:
+            type: string
+          example: "rank"
       responses:
           '200':
             description: OK
@@ -276,6 +320,14 @@ paths:
       tags:
         - Institution
       summary: get institution info
+      parameters:
+        - name: institution_id
+          in: path
+          required: true
+          description: The ID of the institution
+          schema:
+            type: string
+          example: "bd726c33-56c7-11ef-a38e-7cd30ac74cb2"
       responses:
         '200':
           description: ''
