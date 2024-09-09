@@ -1,0 +1,126 @@
+openapi: '3.0.3'
+info:
+  title: API Aplikasi Pendidikan Karakter Nabawiyah
+  version: '0.0.1'
+servers:
+  - url: https://v1.api.karakternabawiyah.com
+tags:
+  - name: Test Types
+  - name: Doing Test
+  - name: Result
+  - name: User
+  - name: Institution
+paths:
+  /test_types:
+    get:
+      tags:
+        - Test Types
+      summary: get lists of test types
+      responses:
+          '200':
+            description: OK
+  /test_types/{test_type_id}:
+    get:
+      tags:
+        - Test Types
+      summary: get questions for a test type
+      responses:
+          '200':
+            description: OK
+  /tests:
+    post:
+      tags:
+        - Doing Test
+      summary: make a new test
+      responses:
+          '200':
+            description: OK
+  /tests/{test_id}:
+    get:
+      tags:
+        - Result
+      summary: get a result of a test
+      responses:
+          '200':
+            description: OK
+    put:
+      tags:
+        - Doing Test
+      summary: updating a test answers or properties
+      responses:
+          '200':
+            description: OK
+  /tests/{test_id}/image/{image_type}:
+    get:
+      tags:
+        - Result
+      summary: get tree map image
+      responses:
+          '200':
+            description: OK
+  /tests/{test_id}/calculate:
+    put:
+      tags:
+        - Result
+      summary: recalculate result of a test
+      responses:
+          '200':
+            description: OK
+
+
+  /users/{user_id}:
+    get:
+      tags:
+        - User
+      summary: get public user info
+      responses:
+          '200':
+            description: OK
+    put:
+      tags:
+        - User
+      summary: update self user info
+      responses:
+          '200':
+            description: OK
+  /users/{wa_number}:
+    put:
+      tags:
+        - User
+      summary: request login link (key) to whatsapp
+      responses:
+          '200':
+            description: OK
+  /users/tests/{login_key}:
+    get:
+      tags:
+        - User
+      summary: get list of tests taken by user
+      responses:
+          '200':
+            description: OK
+  /institutions:
+    get:
+      tags:
+        - Institution
+      summary: get list of institution 
+      responses:
+          '200':
+            description: OK
+  /institutions/{institution_id}:
+    get:
+      tags:
+        - Institution
+      summary: get institution info
+      responses:
+          '200':
+            description: OK
+  /institutions/{institution_id}/{login_key}:
+    put:
+      tags:
+        - Institution
+      summary: update institution info
+      responses:
+          '200':
+            description: OK
+  
