@@ -164,7 +164,7 @@ paths:
                 $ref: '#/components/schemas/Message'
   
   /calculate/{test_id}:
-    put:
+    get:
       tags:
         - Result
       summary: calculate result of a test
@@ -175,7 +175,7 @@ paths:
           description: The ID of the test
           schema:
             type: string
-          example: "13d08571-5662-4c6e-a0dd-f8ab195621b9"
+          example: "a6c75ea9-e739-4964-ae6c-c11815ca0a16"
       responses:
         '200':
           description: ''
@@ -206,19 +206,7 @@ paths:
       responses:
           '200':
             description: OK
-
-  /users/{user_id}:
-    get:
-      tags:
-        - User
-      summary: get public user info
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Users'
+  /users:
     post:
       tags:
         - User
@@ -247,6 +235,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Message'
+  /users/{user_id}:
+    get:
+      tags:
+        - User
+      summary: get public user info
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: The ID of the user
+          schema:
+            type: string
+          example: "bacc1b61-649b-11ef-a38e-7cd30ac74cb2"
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
     put:
       tags:
         - User
