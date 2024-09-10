@@ -10,12 +10,7 @@
     <script defer>
       window.onload = function () {
         const ui = SwaggerUIBundle({
-          urls: [
-            {
-              name: "API Tafsir Bakat",
-              url: "api-pkn.json",
-            },
-          ],
+          url:"api-pkn.json",
           dom_id: "#swagger-ui",
           deepLinking: true,
           presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
@@ -25,23 +20,5 @@
         window.ui = ui;
       };
     </script>
-    <style>
-      .swagger-ui .topbar .download-url-wrapper input[type="text"] {
-        border: 2px solid #77889a;
-      }
-      .swagger-ui .topbar .download-url-wrapper .download-url-button {
-        background: #77889a;
-      }
-      .swagger-ui img {
-        display: none;
-      }
-      .swagger-ui .topbar {
-        background-color: #ededed;
-        border-bottom: 2px solid #c1c1c1;
-      }
-      .swagger-ui .topbar .download-url-wrapper .select-label {
-        color: #3b4151;
-      }
-    </style>
   </body>
 </html>
