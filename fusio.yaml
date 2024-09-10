@@ -5,6 +5,25 @@ info:
 servers:
   - url: https://api.karakternabawiyah.com/v1/public/
 paths:
+  /tafsir_bakat/calculate/{id}:
+    get:
+      tags:
+        - pkn
+      description: Calculate a test
+      operationId: tafsir.bakat.calculate
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Passthru'
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
   /tafsir_bakat/users/{id}:
     get:
       tags:
@@ -597,6 +616,10 @@ components:
           type: string
         id:
           type: string
+    Passthru:
+      description: No schema information available
+      type: object
+      additionalProperties: []
     System_About:
       type: object
       properties:
