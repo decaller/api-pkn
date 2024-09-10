@@ -619,7 +619,6 @@ components:
     Passthru:
       description: No schema information available
       type: object
-      additionalProperties: []
     System_About:
       type: object
       properties:
